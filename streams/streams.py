@@ -6,17 +6,17 @@ class PacienteOutputStream(io.RawIOBase):
         self.pacientes = pacientes[:n_objetos]
         self.destino = destino
 
-    def enviar_dados(self):
+    def enviar_dados(self, debug=True):
         for p in self.pacientes:
-            # 1. Transformar atributos em bytes
             nome_bytes = p.nome.encode('utf-8')
             especie_bytes = p.especie.encode('utf-8')
             
-            # 2. Preparar os tamanhos (Header)
             header = struct.pack('!III', p.id_animal, len(nome_bytes), len(especie_bytes))
+            pacote = header + nome_bytes + especie_bytes
             
-            # 3. Escrever no destino
-            self.destino.write(header)
-            self.destino.write(nome_bytes)
-            self.destino.write(especie_bytes)
+            if debug:
+                hex_dump = pacote.hex(' ').upper()
+                print(f"Objeto [{p.nome} | {p.especie}]: {hex_dump}")
+            
+            self.destino.write(pacote)
             self.destino.flush()
