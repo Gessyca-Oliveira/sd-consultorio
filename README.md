@@ -1,15 +1,28 @@
 # Trabalho 1: Sistemas Distribuídos - Comunicação entre Processos
+> **Comunicação entre Processos (IPC) & Serialização Manual** > *Universidade Federal do Ceará – Campus Quixadá*
+Disciplina: Sistemas Distribuídos
+Docente: Antônio Rafael Braga
+Discentes: Alfredo Borges do Nascimento Neto | Gessyca de Oliveira Cunha
 
 Este projeto implementa os conceitos de comunicação entre processos (IPC), manipulação de fluxos de dados (Streams) e serialização manual, aplicados a um serviço de **Consultório Veterinário**.
 
 ## Como Executar
+### Pré-requisitos
+* Python 3.10 ou superior.
 
-1. Certifique-se de ter o Python 3.10+ instalado.
-2. Execute o script principal:
+### Passo a Passo
+1. **Clonar o repositório:**
+   ```bash
+   git clone https://github.com/seu-usuario/sd-consultorio.git
+   cd sd-consultorio
+   ```
+2. **Executar Testes de Serialização:**
    ```bash
    python main.py
    ```
-3. Verifique a saída no console (Hex Dump) e a criação do arquivo `dados.bin`.
+3. **Executar Alertas Multicast (UDP):**
+   * Abra um terminal para o cliente: `python usuarios/cliente.py`
+   * Abra outro terminal para o administrador: `python usuarios/admin_multicast.py`
 
 ---
 
